@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynata.dev</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -15,7 +16,7 @@
 <body class="bg-[#050509] text-white font-sans">
 
 <!-- NAVBAR -->
-<nav class="relative flex justify-between items-center px-4 sm:px-8 lg:px-16 py-6 sm:py-8">
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 sm:px-8 lg:px-16 py-4 sm:py-6 lg:py-8 bg-[#050509]/95 backdrop-blur" data-aos="fade-down" data-aos-duration="800">
   <div class="flex items-center gap-2">
     <img src="assets/images/logo.png" alt="Dynata.dev" class="h-8 sm:h-10 lg:h-12">
     <div class="hidden sm:block">
@@ -44,7 +45,8 @@
   </label>
 
   <!-- Mobile Menu -->
-  <div class="md:hidden absolute top-full left-0 right-0 bg-[#050509] border-t border-gray-700 py-4 px-4 transform transition-all duration-300 ease-in-out">
+  <div id="mobileMenu"
+class="md:hidden absolute top-full left-0 right-0 bg-[#050509]/95 backdrop-blur border-t border-gray-800 px-6 overflow-hidden max-h-0 opacity-0 transition-all duration-300">
     <ul class="flex flex-col gap-4 text-sm text-gray-300 font-medium">
       <li class="hover:text-white transition py-2 border-b border-gray-700"><a href="#home">Home</a></li>
       <li class="hover:text-white transition py-2 border-b border-gray-700"><a href="#about">About</a></li>
@@ -65,86 +67,99 @@
 #mobile-menu-toggle:checked + label span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
 }
-#mobile-menu-toggle:checked ~ div {
-  max-height: 300px;
+#mobile-menu-toggle:checked ~ #mobileMenu {
+  max-height: 400px;
   opacity: 1;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-#mobile-menu-toggle ~ div {
+
+#mobileMenu {
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
 }
 </style>
 
 <!-- HERO -->
-<section id="home" class="grid md:grid-cols-2 items-center px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32 gap-6 sm:gap-8 lg:gap-12">
+<section id="home"
+class="grid md:grid-cols-2 items-center
+px-5 sm:px-8 lg:px-16
+py-24 sm:py-28 lg:py-36
+gap-12
+min-h-screen
+max-w-7xl
+mx-auto">
 
-  <div class="ml-0 sm:ml-4 lg:ml-12">
-    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+  <div class="ml-0 sm:ml-2 lg:ml-12" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-6 leading-tight">
       Dynata<span class="text-blue-500">.dev</span>
     </h1>
     <p class="text-lg sm:text-xl lg:text-2xl text-gray-400 mb-3 sm:mb-4 font-medium">
       Building Clean & Scalable Websites
     </p>
-    <p class="text-base sm:text-lg lg:text-lg text-gray-500 leading-relaxed">
+    <p class="text-sm sm:text-lg lg:text-lg text-gray-500 leading-relaxed">
       I help create modern, fast, and responsive websites.
     </p>
   </div>
 
-  <div class="flex justify-center items-center relative mt-8 sm:mt-0">
+  <div class="flex justify-center items-center relative mt-8 sm:mt-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
     <div class="absolute w-48 sm:w-64 lg:w-[32rem] h-40 sm:h-60 lg:h-80 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 rounded-full blur-3xl opacity-50 transform -rotate-12" style="filter: blur(60px);"></div>
-    <img src="assets/images/logo.png" class="w-40 sm:w-64 lg:w-96 drop-shadow-2xl relative z-10" style="filter: drop-shadow(0 20px 40px rgba(59, 130, 246, 0.2));">
+    <img src="assets/images/logo.png"
+class="w-52 sm:w-72 md:w-80 lg:w-[28rem] xl:w-[34rem]
+max-w-full" style="filter: drop-shadow(0 20px 40px rgba(59, 130, 246, 0.2));">
   </div>
 
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="grid md:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32 items-center">
+<section id="about" class="grid md:grid-cols-2 gap-6 sm:gap-12 lg:gap-20 px-4 sm:px-6 lg:px-16 py-16 sm:py-24 lg:py-32 items-center max-w-7xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
 
-  <div class="flex justify-center relative">
+  <div class="flex justify-center relative" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
     <div class="absolute inset-0 flex items-center justify-center">
       <div class="w-48 sm:w-64 lg:w-96 h-48 sm:h-64 lg:h-96 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full blur-2xl opacity-80"></div>
     </div>
-    <img src="assets/images/about.png" class="w-48 sm:w-64 lg:w-80 rounded-full relative z-10 object-cover">
+    <img src="assets/images/about.png" class="w-40 sm:w-64 lg:w-80 rounded-full relative z-10 object-cover">
   </div>
 
-  <div>
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">About</h2>
-    <p class="text-base sm:text-lg lg:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">
+  <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6">About</h2>
+    <p class="text-sm sm:text-lg lg:text-lg text-gray-300 mb-4 sm:mb-8 leading-relaxed">
       Hi, My name is I Putu Respa Putra Wiradinata, i am a Web Developer from Bali who focuses on creating modern, clean, and scalable websites.
     </p>
-    <div class="flex gap-4 sm:gap-6">
-      <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center hover:scale-110 transition">
-        <img src="assets/images/dynata.png" alt="Dynata" class="w-5 sm:w-6 h-5 sm:h-6">
+    <div class="flex gap-2 sm:gap-4">
+      <a href="#" class="w-12 h-12 sm:w-14 sm:h-14 bg-[#11131a] border border-white/10 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500/20 transition-all duration-300">
+        <img src="assets/images/logo.png" alt="Dynata" class="w-6 sm:w-7 h-6 sm:h-7">
       </a>
-      <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center hover:scale-110 transition">
-        <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37"/><circle cx="17.5" cy="6.5" r="1.5" fill="black"/></svg>
+      <a href="#" class="w-12 h-12 sm:w-14 sm:h-14 bg-[#11131a] border border-white/10 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500/20 transition-all duration-300">
+        <svg class="w-5 sm:w-6 h-5 sm:h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37"/>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+        </svg>
       </a>
-      <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center hover:scale-110 transition">
-        <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="black"><path d="M19 3a9 9 0 0 1-9 9c-1.1 0-2.1-.2-3.1-.6l-2.9 2.9c-.5.5-1.3.5-1.8 0s-.5-1.3 0-1.8l2.9-2.9C5.2 8.1 5 7.1 5 6a9 9 0 0 1 9-9m0 2a7 7 0 0 0-7 7c0 .8.1 1.6.3 2.3l-1.7-1.7c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l1.7 1.7c-.7.2-1.5.3-2.3.3a7 7 0 0 0-7 7v2h2v-2a5 5 0 0 1 5-5c1.2 0 2.3-.4 3.1-1.1l1.7 1.7c.4.4 1 .4 1.4 0s.4-1 0-1.4l-1.7-1.7c.7-.8 1.1-1.9 1.1-3.1 0-2.8 2.2-5 5-5z"/></svg>
+      <a href="#" class="w-12 h-12 sm:w-14 sm:h-14 bg-[#11131a] border border-white/10 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500/20 transition-all duration-300">
+        <img src="assets/images/wa.jpg" alt="Dynata" class="w-6 sm:w-7 h-6 sm:h-7">
       </a>
-      <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center hover:scale-110 transition">
-        <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="black"><path d="M17.6 11.48l1.41-1.41c.39-.39.39-1.02 0-1.41l-5.66-5.66c-.39-.39-1.02-.39-1.41 0L11 3.57c-.39-.39-1.02-.39-1.41 0L2.92 10.83c-.39.39-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0l4.24-4.24c.39-.39 1.02-.39 1.41 0l4.24 4.24c.39.39 1.02.39 1.41 0zm5.66-2.83l-5.66 5.66c-.39.39-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0l5.66-5.66c.39-.39.39-1.02 0-1.41l-1.41-1.41c-.39-.39-1.02-.39-1.41 0z"/></svg>
-      </a>
+    
     </div>
   </div>
 
 </section>
 
 <!-- PROJECT -->
-<section id="projects" class="px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32">
+<section id="projects" class="px-4 sm:px-6 lg:px-16 py-16 sm:py-24 lg:py-32 max-w-7xl mx-auto">
 
-  <div class="text-center mb-8 sm:mb-12 lg:mb-16">
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Selected Projects</h2>
-    <p class="text-sm sm:text-base lg:text-lg text-gray-400">
+  <div class="text-center mb-6 sm:mb-12 lg:mb-16 mx-auto" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4">Selected Projects</h2>
+    <p class="text-xs sm:text-base lg:text-lg text-gray-400">
       Real-world projects built with Laravel, Tailwind, and modern web technologies.
     </p>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
 
     <!-- CARD -->
-    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2">
+    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
       <div class="relative overflow-hidden bg-gray-900 aspect-[4/3]">
         <img src="assets/images/olga sehat.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
       </div>
@@ -153,7 +168,7 @@
       </div>
     </div>
 
-    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2">
+    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
       <div class="relative overflow-hidden bg-gray-900 aspect-[4/3]">
         <img src="assets/images/siekstra.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
       </div>
@@ -162,7 +177,7 @@
       </div>
     </div>
 
-    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2">
+    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
       <div class="relative overflow-hidden bg-gray-900 aspect-[4/3]">
         <img src="assets/images/bali lady.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
       </div>
@@ -171,7 +186,7 @@
       </div>
     </div>
 
-    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2">
+    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
       <div class="relative overflow-hidden bg-gray-900 aspect-[4/3]">
         <img src="assets/images/lumbung.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
       </div>
@@ -180,7 +195,7 @@
       </div>
     </div>
 
-    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2">
+    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
       <div class="relative overflow-hidden bg-gray-900 aspect-[4/3]">
         <img src="assets/images/sistem penugasan.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
       </div>
@@ -189,7 +204,7 @@
       </div>
     </div>
 
-    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2">
+    <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
       <div class="relative overflow-hidden bg-gray-900 aspect-[4/3]">
         <img src="assets/images/boat gili.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
       </div>
@@ -203,112 +218,140 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32 text-center">
+<section id="skills" class="px-4 sm:px-6 lg:px-16 py-16 sm:py-24 lg:py-32 text-center bg-black text-white" data-aos="fade-up" data-aos-duration="1000">
 
-  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 sm:mb-16 lg:mb-20">Tools & Skills</h2>
+  <div class="max-w-7xl mx-auto">
 
-  <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-12 items-center justify-center">
+  <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-16 lg:mb-20" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    Tools & Skills
+  </h2>
 
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white text-2xl sm:text-2xl lg:text-3xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        5
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl sm:text-2xl lg:text-3xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        3
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center text-black text-lg sm:text-xl lg:text-2xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        JS
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center text-white text-2xl sm:text-2xl lg:text-3xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        L
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center text-white text-sm sm:text-base lg:text-xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        SQL
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-xl sm:text-2xl lg:text-2xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        C
-      </div>
+  <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-10 items-center justify-center">
+
+    <!-- HTML -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+           alt="HTML"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
     </div>
 
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center text-white text-sm sm:text-base lg:text-lg font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        C++
-      </div>
+    <!-- CSS -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+           alt="CSS"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
     </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 rounded-lg flex items-center justify-center text-white text-xl sm:text-2xl lg:text-2xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        ◆
-      </div>
+
+    <!-- JavaScript -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+           alt="JavaScript"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
     </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xl sm:text-2xl lg:text-2xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        C
-      </div>
+
+    <!-- Laravel -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+           alt="Laravel"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
     </div>
-    <div class="flex justify-center">
-      <div class="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-xl sm:text-2xl lg:text-2xl font-bold shadow-lg hover:scale-110 transition-transform duration-300">
-        🐳
-      </div>
+
+    <!-- MySQL -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+           alt="MySQL"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
+    </div>
+
+    <!-- C -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+           alt="C"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
+    </div>
+
+    <!-- C++ -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+           alt="C++"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
+    </div>
+
+    <!-- Figma -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+           alt="Figma"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
+    </div>
+
+    <!-- Canva -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+      <img src="assets/images/canva.png"
+           alt="Canva"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
+    </div>
+
+    <!-- Elephant -->
+    <div class="flex justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968342.png"
+           alt="Elephant"
+           class="w-12 sm:w-16 lg:w-20 hover:scale-110 transition duration-300">
     </div>
 
   </div>
 
 </section>
+<section id="contact" class="px-4 sm:px-6 lg:px-16 py-16 sm:py-24 lg:py-32 grid md:grid-cols-2 items-center gap-6 sm:gap-12 lg:gap-20 max-w-7xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
 
-<!-- CONTACT -->
-<section id="contact" class="px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32 grid md:grid-cols-2 items-center gap-8 sm:gap-12 lg:gap-20">
-
-  <div>
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Let's Work Together 🚀</h2>
-    <p class="text-sm sm:text-base lg:text-lg text-gray-400 mb-8 sm:mb-12 leading-relaxed">
+  <div data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6">Let's Work Together 🚀</h2>
+    <p class="text-xs sm:text-base lg:text-lg text-gray-400 mb-6 sm:mb-12 leading-relaxed">
       Have a project in mind? Feel free to reach out and let's build something great.
     </p>
     
-    <div class="mb-6 sm:mb-8">
-      <p class="text-xs sm:text-sm uppercase tracking-widest text-gray-500 mb-4 sm:mb-6">Contact me</p>
-      <div class="flex gap-3 sm:gap-4">
-        <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300">
-          <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3.5c-2.8 0-4.9 1.1-6.4 2.7-1.5 1.5-2.6 3.6-2.6 6 0 1 .2 1.9.6 2.8L3 21l5.2-1.4c.8.4 1.7.6 2.6.6 2.4 0 4.5-1.1 6-2.6 1.6-1.6 2.7-3.6 2.7-6 0-4.7-3.8-8.5-8.5-8.5z"/></svg>
-        </a>
-        <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300">
-          <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
-        </a>
-        <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300">
-          <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        </a>
-        <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300">
-          <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-12h4v2"/><rect x="2" y="9" width="4" height="12" rx="1"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300">
-          <svg class="w-5 sm:w-6 h-5 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-4 1-4-2-5-2m14 4v-3.6a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.14-3.54s-1.29-.41-4.22 1.58a14.47 14.47 0 0 0-7.52 0C6.26 1.82 4.97 2.23 4.97 2.23A5.07 5.07 0 0 0 4.83 5.77 5.44 5.44 0 0 0 4 10.23c0 5.42 3.29 6.61 6.42 7A3.37 3.37 0 0 0 9 19.4V23"/></svg>
-        </a>
-        <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300">
-          <img src="assets/images/dynata.png" alt="Dynata" class="w-4 sm:w-5 h-4 sm:h-5">
-        </a>
-      </div>
+    <div class="mb-4 sm:mb-8">
+      <p class="text-xs uppercase tracking-widest text-gray-500 mb-3 sm:mb-6">Contact me</p>
+      <div class="flex gap-2 sm:gap-4">
+      <a href="#" class="w-12 h-12 sm:w-14 sm:h-14 bg-[#11131a] border border-white/10 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500/20 transition-all duration-300">
+        <img src="assets/images/logo.png" alt="Dynata" class="w-6 sm:w-7 h-6 sm:h-7">
+      </a>
+      <a href="#" class="w-12 h-12 sm:w-14 sm:h-14 bg-[#11131a] border border-white/10 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500/20 transition-all duration-300">
+        <svg class="w-5 sm:w-6 h-5 sm:h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37"/>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="#" class="w-12 h-12 sm:w-14 sm:h-14 bg-[#11131a] border border-white/10 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500/20 transition-all duration-300">
+        <img src="assets/images/wa.jpg" alt="Dynata" class="w-6 sm:w-7 h-6 sm:h-7">
+      </a>
+      
+    </div>
     </div>
 
-    <div class="pt-6 sm:pt-8 border-t border-gray-700">
-      <p class="text-xs sm:text-sm text-gray-500 mb-1 sm:mb-2">Dynata<span class="text-blue-500">.dev</span></p>
+    <div class="pt-4 sm:pt-8 border-t border-gray-700">
+      <p class="text-xs text-gray-500 mb-1">Dynata<span class="text-blue-500">.dev</span></p>
       <p class="text-xs text-gray-600">Web Developer</p>
     </div>
   </div>
 
-  <div class="flex justify-center items-center mt-8 md:mt-0">
+  <div class="flex justify-center items-center mt-8 md:mt-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
     <img src="assets/images/logo.png" class="w-48 sm:w-64 lg:w-96 drop-shadow-2xl" style="filter: drop-shadow(0 20px 40px rgba(59, 130, 246, 0.3));">
   </div>
 
 </section>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  const isMobile = window.innerWidth < 768;
+  AOS.init({
+    duration: isMobile ? 600 : 800,
+    easing: 'ease-in-out-quad',
+    once: false,
+    offset: isMobile ? 50 : 100,
+    disable: false
+  });
+</script>
 
 </body>
 </html>
